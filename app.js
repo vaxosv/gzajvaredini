@@ -40,9 +40,6 @@ app.get("/admin", function (req, res) {
 
 app.get("/admin/", function (req, res) {
     res.render("login")
-    if (1) {
-        res.render("admin/dashboard")
-    }
 })
 
 app.post("/admin/tables", function (req, res) {
