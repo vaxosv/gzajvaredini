@@ -9,18 +9,18 @@ html(lang="en")
         include includes/css/core.pug
 
         include includes/css/custom.pug
-        style(type="text/css").
-            header{
-                max-width: 100%;
-                text-align: right;
-                padding: 40px;
-            }
-            a{
-                width: 100%;
-            }
+
+        include includes/css/usercostume.pug
+
     body
         header
             a(href="/admin") adminka
+
+        div.body
+            h1 მოგესალმებით 
+            p საიტი მალე იქნება ^_^
+
+
 
 
         include includes/js/core.pug

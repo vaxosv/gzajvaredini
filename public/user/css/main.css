@@ -1,0 +1,13 @@
+header {
+    max-width: 100%;
+    text-align: right;
+    padding: 40px;
+}
+
+a {
+    width: 100%;
+}
+
+.body{
+    text-align: center;
+}
