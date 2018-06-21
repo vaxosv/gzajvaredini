@@ -37,11 +37,11 @@ app.get("/admin", function (req, res) {
         }
     })
 });
-app.get("/admin/", function (req, res) {
+app.get("/", function (req, res) {
     res.send("hi")
 })
 
-app.get("/admin/", function (req, res) {
+app.get("/admin", function (req, res) {
     res.render("login")
 })
 
