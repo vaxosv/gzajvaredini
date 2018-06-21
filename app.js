@@ -25,20 +25,20 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 
-app.get("/admin", function (req, res) {
-    baza.find({}, function (err, wigni) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("index", {
-                title: "wignebis baza",
-                wignebi: wigni,
-            });
-        }
-    })
-});
+// app.get("/admin", function (req, res) {
+//     baza.find({}, function (err, wigni) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             res.render("index", {
+//                 title: "wignebis baza",
+//                 wignebi: wigni,
+//             });
+//         }
+//     })
+// });
 app.get("/", function (req, res) {
-    res.send("hi")
+    res.render("home")
 })
 
 app.get("/admin", function (req, res) {
