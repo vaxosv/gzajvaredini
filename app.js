@@ -24,7 +24,6 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-console.log("sasasa");
 // app.get("/admin/list", function (req, res) {
 //     baza.find({}, function (err, wigni) {
 //         if (err) {
