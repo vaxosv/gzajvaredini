@@ -39,7 +39,9 @@ app.use(bodyParser.json())
 app.get("/", function (req, res) {
     res.render("home")
 })
-
+app.get("/user/login", function (req, res) {
+    res.render("userlogin")
+})
 app.get("/admin", function (req, res) {
     res.render("login")
 })
