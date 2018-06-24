@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
+const mainRouter = require("./routes/mainrouts")
 let baza = require("./models/mwerlebi")
 const mlab = require("./config")
 
@@ -24,45 +25,8 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-// app.get("/admin/list", function (req, res) {
-//     baza.find({}, function (err, wigni) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.render("index", {
-//                 title: "wignebis baza",
-//                 wignebi: wigni,
-//             });
-//         }
-//     })
-// });
-app.get("/", function (req, res) {
-    res.render("home")
-})
-app.get("/user/login", function (req, res) {
-    res.render("userlogin")
-})
-app.get("/admin", function (req, res) {
-    res.render("login")
-})
 
-app.post("/admin/tables", function (req, res) {
-
-    let newbook = new baza();
-
-    newbook.title = req.body.satauri;
-    newbook.avtori = req.body.avtori;
-    newbook.janri = req.body.janri;
-
-    newbook.save(function (err) {
-        if (err) {
-            console.log(err);
-            return;
-        } else {
-            res.render("dashboard")
-        }
-    })
-})
+app.use('/',mainRouter);
 
 
 app.listen(process.env.PORT || 80, function () {
