@@ -4,14 +4,13 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const mainRouter = require("./routes/mainrouts");
-const mlab = require("./config");
 const clean = require("./clean");
 let baza = require("./models/mwerlebi");
 
 
 
 //db set
-mongoose.connect(mlab.dbLink);
+mongoose.connect(clean.config);
 let db = mongoose.connection;
 db.once('open', clean.mongoconnect)
 db.on("error", clean.mongoerr)
