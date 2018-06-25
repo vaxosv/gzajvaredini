@@ -1,0 +1,49 @@
+doctype html
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+
+    title SB Admin - Start Bootstrap Template
+
+    include includes/css/core.pug
+
+    include includes/css/custom.pug
+
+  body#page-top.fixed-nav.sticky-footer.bg-dark
+    include includes/navbar.pug
+    .content-wrapper
+      .container-fluid
+        form(action="/admin/addbook", method='post')
+            .form-group
+            input.form-control(type='text', placeholder='წიგნის სათაური')
+            .form-group
+            input.form-control(type='text', placeholder='წიგნის ავტორი')
+            .form-group
+            input.form-control(type='text', placeholder='წიგნის დასახელება')
+            .form-group
+            input.form-control(type='text', placeholder='წიგნის გამოშვების წელი')
+            .form-group
+            label(for='exampleFormControlFile1') ფაილის ატვირთვა
+            input#exampleFormControlFile1.form-control-file(type='file')
+            select.form-control.mt-4
+                option ისტორია              
+                option ქართული
+                option მათემატიკა
+
+            <label class=" mt-5"for="exampleFormControlTextarea1">ტექსტი</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+            <button type="submit" class="btn btn-primary mt-5 ai-center text-centr">Submit</button>
+
+      include includes/footer.pug
+
+      include includes/modals/logout.pug
+
+      include includes/js/core.pug
+
+      include includes/js/custom.pug

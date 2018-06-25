@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
+//get req user
 router.get("/", function (req, res) {
     res.render("home")
 })
@@ -9,24 +10,47 @@ router.get("/user/login", function (req, res) {
     res.render("userlogin")
 })
 
-// app.get("/admin/list", function (req, res) {
-//     baza.find({}, function (err, wigni) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.render("index", {
-//                 title: "wignebis baza",
-//                 wignebi: wigni,
-//             });
-//         }
-//     })
-// });
 
+// get req admin 
 router.get("/admin", function (req, res) {
     res.render("login")
 })
 
-router.post("/admin/tables", function (req, res) {
+router.get("/admin/dashboard", (req, res)=>{
+    res.render("dashboard")
+})
+
+router.get("/admin/home", (req, res)=>{
+    res.render("home")
+})
+router.get("/admin/login", (req, res)=>{
+    res.render("login")
+})
+router.get("/admin/tables", function (req, res) {
+    baza.find({}, function (err, wigni) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("tables", {
+                title: "wignebis baza",
+                wignebi: wigni,
+            });
+        }
+    })
+})
+router.get("/admin/userprofile", (req, res)=>{
+    res.render("userprofile")
+})
+
+router.get("/admin/addbook",function (req, res) {
+    res.render("addbook")
+})
+
+
+
+//post req
+
+router.post("/admin/addbook",function (req, res) {
 
     let newbook = new baza();
 
@@ -39,7 +63,7 @@ router.post("/admin/tables", function (req, res) {
             console.log(err);
             return;
         } else {
-            res.render("dashboard")
+            res.render("addbook")
         }
     })
 })
