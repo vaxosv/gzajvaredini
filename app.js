@@ -1,11 +1,11 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser')
 const app = express();
-const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const mainRouter = require("./routes/mainrouts");
 const clean = require("./clean");
-let baza = require("./models/mwerlebi");
+
 
 
 

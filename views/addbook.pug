@@ -18,19 +18,19 @@ html(lang='en')
     include includes/navbar.pug
     .content-wrapper
       .container-fluid
-        form(action="/admin/addbook", method='post')
+        form(action="/admin/addbook", method='post', autocomplete="off" )
             .form-group
-            input.form-control(type='text', placeholder='წიგნის სათაური')
+            input.form-control(type='text', placeholder='სათაური', name="satauri")
             .form-group
-            input.form-control(type='text', placeholder='წიგნის ავტორი')
+            input.form-control(type='text', placeholder='ავტორი', name="avtori")
             .form-group
-            input.form-control(type='text', placeholder='წიგნის დასახელება')
+            input.form-control(type='text', placeholder='ჟანრი', name="janri")
             .form-group
-            input.form-control(type='text', placeholder='წიგნის გამოშვების წელი')
+            input.form-control(type='text', placeholder='გამოშვების წელი' name="weli")
             .form-group
             label(for='exampleFormControlFile1') ფაილის ატვირთვა
             input#exampleFormControlFile1.form-control-file(type='file')
-            select.form-control.mt-4
+            select.form-control.mt-4()
                 option ისტორია              
                 option ქართული
                 option მათემატიკა

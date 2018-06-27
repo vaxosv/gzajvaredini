@@ -11,9 +11,13 @@ let bookmodel = mongoose.Schema({
         required: true
     },
     janri:{
-        type: String,
+        type: Array,
         require: true
     },
+    data:{
+        type: String,
+        require: true
+    }
 })
 
 let books = module.exports = mongoose.model("mwerlebi", bookmodel)

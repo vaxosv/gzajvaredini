@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+let baza = require("./../models/mwerlebi");
+const bodyParser = require("body-parser");
 
 
 //get req user
@@ -57,6 +59,7 @@ router.post("/admin/addbook",function (req, res) {
     newbook.title = req.body.satauri;
     newbook.avtori = req.body.avtori;
     newbook.janri = req.body.janri;
+    newbook.data = req.body.weli;
 
     newbook.save(function (err) {
         if (err) {

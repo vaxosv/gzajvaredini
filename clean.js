@@ -8,7 +8,7 @@ let clean = {
     portcallback:()=>{
         console.log("app run in port 80");
     },
-    config: 'mongodb://vaxo:Qweasd123@ds227459.mlab.com:27459/test_vaxosv',
+    config: 'mongodb://vaxo:qweasd123@ds227459.mlab.com:27459/test_vaxosv',
 }
 
 module.exports = clean
