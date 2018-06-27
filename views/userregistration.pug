@@ -1,0 +1,41 @@
+doctype html
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+
+    title registration
+
+    include includes/css/core.pug
+
+    include includes/css/custom.pug
+
+  body.bg-dark
+    .container
+      .card.card-login.mx-auto.mt-5
+        .card-header
+          | registration
+        .card-body
+          form(method="POST", action="/user/register")
+            .form-group
+              label Name a
+              input.form-control(type='text', name="name" placeholder='Enter Name', autocomplete="off")
+            .form-group
+              label(for='exampleInputEmail1') Email address
+              input#exampleInputEmail1.form-control(type='email', name="emain" placeholder='Enter Email', autocomplete="off")
+            .form-group
+              label Username
+              input.form-control(type='text', name="username" placeholder='Enter Username', autocomplete="off")
+            .form-group
+              label(for='exampleInputPassword1') Password
+              input#exampleInputPassword1.form-control(type='password', name="password" placeholder='Password', autocomplete="off")
+            .form-group
+              label(for='exampleInputPassword1') Confrime password
+              input#exampleInputPassword1.form-control(type='password', name="password2" placeholder='Confrim Password', autocomplete="off")  
+            button.btn.btn-primary(type='submit') Sign up
+
+    include includes/js/core.pug

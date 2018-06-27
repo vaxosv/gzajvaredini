@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const app = express();
 const mongoose = require('mongoose');
 const mainRouter = require("./routes/mainrouts");
+const userRouter = require("./routes/user");
+const adminRouter = require("./routes/admin");
 const clean = require("./clean");
 
 
@@ -26,6 +28,9 @@ app.use(bodyParser.json())
 
 //routing
 app.use('/', mainRouter);
+app.use('/user', userRouter);
+app.use('/admin', adminRouter);
+
 
 //ports
 app.listen(process.env.PORT || 80, clean.portcallback)
