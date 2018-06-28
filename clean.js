@@ -11,4 +11,5 @@ let clean = {
     config: 'mongodb://vaxo:qweasd123@ds227459.mlab.com:27459/test_vaxosv',
 }
 
+
 module.exports = clean
