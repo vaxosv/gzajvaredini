@@ -7,12 +7,14 @@ const mainRouter = require("./routes/mainrouts");
 const userRouter = require("./routes/user");
 const adminRouter = require("./routes/admin");
 const clean = require("./clean");
+const database = require('./config/database')
+const passport = require ('passport'); 
 
 
 
 
 //db set
-mongoose.connect(clean.config);
+mongoose.connect(database.database);
 let db = mongoose.connection;
 db.once('open', clean.mongoconnect)
 db.on("error", clean.mongoerr)
@@ -25,6 +27,18 @@ app.use('/public', express.static('public'))
 //body oarser
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+//validatoris middlware must insert !!!
+
+//pasport
+require('./config/passport')(passport);
+
+app.use(passport.initialize());
+app.use(passport.session())
+
+
+
+
 
 //routing
 app.use('/', mainRouter);
