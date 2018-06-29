@@ -72,10 +72,15 @@ router.post("/register", function (req, res) {
 
 router.post('/login', function (req, res, next) {
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/user/userprofile',
         failureRedirect: '/user/login',
     })(req, res, next);
 });
 
+// logout
+router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/user/login');
+});
 
 module.exports = router;
