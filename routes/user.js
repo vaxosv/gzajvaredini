@@ -24,46 +24,49 @@ router.post("/register", function (req, res) {
     const password = req.body.password
     const password2 = req.body.password2
 
-    req.checkBody("name", "name is required").notEmpty()
-    req.checkBody("emain", "emain is required").notEmpty()
-    req.checkBody("emain", "emain is not waled").isEmain()
-    req.checkBody("username", "username is required").notEmpty()
-    req.checkBody("password", "password is required").notEmpty()
-    req.checkBody("password2", "passwords do not match").equals(password)
 
-    let errors = req.validationErrors()
+    //validaciaa gasaketebeli
 
-    if (errors) {
-        res.render("userregistration", {
-            errors: errors
-        })
-    } else {
-        let newUser = new User({
-            name: name,
-            email: email,
-            username: username,
-            password: password
-        })
+    // req.checkBody("name", "name is required").notEmpty()
+    // req.checkBody("emain", "emain is required").notEmpty()
+    // req.checkBody("emain", "emain is not waled").isEmain()
+    // req.checkBody("username", "username is required").notEmpty()
+    // req.checkBody("password", "password is required").notEmpty()
+    // req.checkBody("password2", "passwords do not match").equals(password)
 
-        bcrypt.genSalt(10, function (err, salt) {
-            bcrypt.hash(newUser.password, salt, function (err, hash) {
+    // let errors = req.validationErrors()
+
+    // if (errors) {
+    //     res.render("userregistration", {
+    //         errors: errors
+    //     })
+    // } else {
+    let newUser = new User({
+        name: name,
+        email: email,
+        username: username,
+        password: password
+    })
+
+    bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(newUser.password, salt, function (err, hash) {
+            if (err) {
+                console.log(err);
+                return
+            }
+
+            newUser.password = hash
+            newUser.save(function (err) {
                 if (err) {
                     console.log(err);
                     return
+                } else {
+                    res.redirect('/user/login')
                 }
-
-                newUser.password = hash
-                newUser.save(function (err) {
-                    if (err) {
-                        console.log(err);
-                        return
-                    } else {
-                        res.redirect('/user/login')
-                    }
-                })
-            });
-        })
-    }
+            })
+        });
+    })
+    // }
 
 })
 

@@ -9,7 +9,7 @@ const adminRouter = require("./routes/admin");
 const clean = require("./clean");
 const database = require('./config/database')
 const passport = require ('passport');
-const expressValidator = require('express-validator');
+// const expressValidator = require('express-validator');
 
 
 
@@ -38,22 +38,22 @@ app.use(passport.initialize());
 app.use(passport.session())
 
 
-app.use(expressValidator({
-    errorFormatter: function(param, msg, value) {
-        var namespace = param.split('.')
-        , root    = namespace.shift()
-        , formParam = root;
+// app.use(expressValidator({
+//     errorFormatter: function(param, msg, value) {
+//         var namespace = param.split('.')
+//         , root    = namespace.shift()
+//         , formParam = root;
   
-      while(namespace.length) {
-        formParam += '[' + namespace.shift() + ']';
-      }
-      return {
-        param : formParam,
-        msg   : msg,
-        value : value
-      };
-    }
-  }));
+//       while(namespace.length) {
+//         formParam += '[' + namespace.shift() + ']';
+//       }
+//       return {
+//         param : formParam,
+//         msg   : msg,
+//         value : value
+//       };
+//     }
+//   }));
 
 
 //routing
