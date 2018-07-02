@@ -12,10 +12,12 @@ html(lang="en")
 
         include includes/css/usercostume.pug
 
+        include includes/css/prof.pug
+
     body
-        div
-            h3 მომხმარებლის სახელი
-            a(href="/user/logout") log out
+        div.header
+            p= user.name
+            a(href="/user/logout").logout log out
         div.body
             nav.usernav
             div.books_list

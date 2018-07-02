@@ -8,10 +8,11 @@ const userRouter = require("./routes/user");
 const adminRouter = require("./routes/admin");
 const clean = require("./clean");
 const database = require('./config/database')
-const passport = require ('passport');
+const passport = require('passport');
 // const expressValidator = require('express-validator');
 
 
+var session = require('express-session')
 
 
 //db set
@@ -26,18 +27,18 @@ app.set('view engine', "pug");
 app.use('/public', express.static('public'))
 
 //body oarser
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 app.use(bodyParser.json())
 
 //validatoris middlware must insert !!!
 
 //pasport
+app.use(session({secret: 'keyboard cat'})) 
 require('./config/passport')(passport);
-
 app.use(passport.initialize());
 app.use(passport.session())
-
-
 
 
 //routing

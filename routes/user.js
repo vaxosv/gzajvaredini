@@ -5,6 +5,7 @@ const User = require("../models/user");
 const expressValidator = require('express-validator');
 const passport = require('passport');
 
+
 router.get("/register", function (req, res) {
     res.render("userregistration")
 })
@@ -12,10 +13,10 @@ router.get("/login", function (req, res) {
     res.render("userlogin")
 })
 router.get("/userprofile", (req, res) => {
-    res.render("userprofile")
+    res.render('userprofile',{
+        user: req.user,
+    })
 })
-
-
 //post
 router.post("/register", function (req, res) {
     const name = req.body.name
@@ -72,6 +73,7 @@ router.post("/register", function (req, res) {
 
 router.post('/login', function (req, res, next) {
     passport.authenticate('local', {
+        
         successRedirect: '/user/userprofile',
         failureRedirect: '/user/login',
     })(req, res, next);

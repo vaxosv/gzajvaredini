@@ -1,0 +1,13 @@
+.header{
+    margin: 0 auto;
+    max-width: 1370px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-left: 80px;
+    padding-right: 100px;
+}
+
+.logout{
+    width: initial;
+}
