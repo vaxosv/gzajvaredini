@@ -10,7 +10,7 @@ let bookmodel = mongoose.Schema({
         required: true
     },
     janri:{
-        type: Array,
+        type: String,
         require: true
     },
     data:{
