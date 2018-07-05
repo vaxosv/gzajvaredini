@@ -16,6 +16,10 @@ let bookmodel = mongoose.Schema({
     data:{
         type: String,
         require: true
+    },
+    link:{
+        type: String,
+        require: true
     }
 })
 

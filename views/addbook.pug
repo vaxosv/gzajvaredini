@@ -18,7 +18,7 @@ html(lang='en')
     include includes/navbar.pug
     .content-wrapper
       .container-fluid
-        form(action="/admin/addbook", method='post', autocomplete="off" )
+        form(action="/admin/addbook", method='post', autocomplete="off", enctype="multipart/form-data" )
             .form-group
             input.form-control(type='text', placeholder='სათაური', name="satauri")
             .form-group
@@ -26,17 +26,10 @@ html(lang='en')
             .form-group
             input.form-control(type='text', placeholder='ჟანრი', name="janri")
             .form-group
-            input.form-control(type='text', placeholder='გამოშვების წელი' name="weli")
+            input.form-control(type='text', placeholder='გამოშვების წელი', name="weli")
             .form-group
             label(for='exampleFormControlFile1') ფაილის ატვირთვა
-            input#exampleFormControlFile1.form-control-file(type='file')
-            select.form-control.mt-4()
-                option ისტორია              
-                option ქართული
-                option მათემატიკა
-
-            <label class=" mt-5"for="exampleFormControlTextarea1">ტექსტი</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            input#exampleFormControlFile1.form-control-file(type='file', name='newwigni')
 
             <button type="submit" class="btn btn-primary mt-5 ai-center text-centr">Submit</button>
 
