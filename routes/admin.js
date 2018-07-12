@@ -4,6 +4,7 @@ let baza = require("./../models/mwerlebi");
 const bodyParser = require("body-parser");
 const multer = require('multer');
 const path = require('path');
+const bcrypt = require('bcryptjs')
 
 // get req admin 
 router.get("/", function (req, res) {
@@ -106,5 +107,42 @@ router.post("/addbook", upload, function (req, res) {
 
 })
 
+
+//admin config
+const admin = require ('./../models/adminmod.js'); 
+
+router.get('/a', function (req, res) { 
+    res.render('adming')
+ })
+
+ router.post('/a', function (req, res) { 
+    const log = req.body.name;
+    const pas = req.body.pass;
+
+    let newadmin = new admin({
+        log: log,
+        pas: pas
+    })
+
+    bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(newadmin.pas, salt, function (err, hash) {
+            if (err) {
+                console.log(err);
+                return
+            }
+
+            newadmin.pas = hash
+            newadmin.save(function (err) {
+                if (err) {
+                    console.log(err);
+                    return
+                } else {
+                    res.redirect('/')
+                }
+            })
+        });
+    })
+
+ })
 
 module.exports = router;
