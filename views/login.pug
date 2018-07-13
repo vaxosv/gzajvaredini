@@ -8,8 +8,7 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
 
-    title SB Admin - Start Bootstrap Template
-
+    title admin login
     include includes/css/core.pug
 
     include includes/css/custom.pug
@@ -20,7 +19,7 @@ html(lang='en')
         .card-header
           | Login
         .card-body
-          form
+          form(method='POST', action='/admin')
             .form-group
               label(for='exampleInputEmail1') Email address
               input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
@@ -32,9 +31,9 @@ html(lang='en')
                 label.form-check-label
                   input.form-check-input(type='checkbox')
                   |                   Remember Password
-            a.btn.btn-primary.btn-block(href='index.html') Login
+            input.btn.btn-primary(type='submit',value='Submit') Login
           .text-center
-            a.d-block.small.mt-3(href='register.html') Register an Account
+            a.d-block.small.mt-3() Register an Account
             a.d-block.small(href='forgot-password.html') Forgot Password?
 
     include includes/js/core.pug
