@@ -1,39 +1,28 @@
-doctype html
-html(lang='en')
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title admin login
 
-  head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    meta(name='description', content='')
-    meta(name='author', content='')
+        include includes/css/core.pug
 
-    title admin login
-    include includes/css/core.pug
+        include includes/css/custom.pug
 
-    include includes/css/custom.pug
+        include includes/css/usercostume.pug
 
-  body.bg-dark
-    .container
-      .card.card-login.mx-auto.mt-5
-        .card-header
-          | Login
-        .card-body
-          form(method='POST', action='/admin')
-            .form-group
-              label(for='exampleInputEmail1') Email address
-              input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
-            .form-group
-              label(for='exampleInputPassword1') Password
-              input#exampleInputPassword1.form-control(type='password', placeholder='Password')
-            .form-group
-              .form-check
-                label.form-check-label
-                  input.form-check-input(type='checkbox')
-                  |                   Remember Password
-            input.btn.btn-primary(type='submit',value='Submit') Login
-          .text-center
-            a.d-block.small.mt-3() Register an Account
-            a.d-block.small(href='forgot-password.html') Forgot Password?
+        body.contaner
+            h1 Login
+                form(method='POST', action='/admin')
+                    #form-group
+                    label Username:
+                    input.form-control(name='username',type='text')
+                    #form-group
+                    label Password:
+                    input.form-control(name='password',type='password')
+                    br
+                    input.btn.btn-primary(type='submit',value='Submit')
+            include includes/js/core.pug
 
-    include includes/js/core.pug
+            include includes/js/usercostumejs.pug

@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const multer = require('multer');
 const path = require('path');
 const bcrypt = require('bcryptjs')
+const passport = require ('passport'); 
 
 // get req admin 
 router.get("/", function (req, res) {
@@ -42,7 +43,7 @@ router.get("/addbook", function (req, res) {
 const storage = multer.diskStorage({
     destination: './public/uploads/',
     filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() +"-"+ path.extname(file.originalname));
+        cb(null, file.fieldname + '-' + Date.now() + "-" + path.extname(file.originalname));
     }
 });
 
@@ -109,29 +110,29 @@ router.post("/addbook", upload, function (req, res) {
 
 
 //admin config
-const admin = require ('./../models/adminmod.js'); 
+const admin = require('./../models/adminmod.js');
 
-router.get('/a', function (req, res) { 
+router.get('/a', function (req, res) {
     res.render('adming')
- })
+})
 
- router.post('/a', function (req, res) { 
-    const log = req.body.name;
-    const pas = req.body.pass;
+router.post('/a', function (req, res) {
+    const username = req.body.name;
+    const password = req.body.pass;
 
     let newadmin = new admin({
-        log: log,
-        pas: pas
+        username: username,
+        password: password
     })
 
     bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(newadmin.pas, salt, function (err, hash) {
+        bcrypt.hash(newadmin.password, salt, function (err, hash) {
             if (err) {
                 console.log(err);
                 return
             }
 
-            newadmin.pas = hash
+            newadmin.password = hash
             newadmin.save(function (err) {
                 if (err) {
                     console.log(err);
@@ -143,6 +144,23 @@ router.get('/a', function (req, res) {
         });
     })
 
- })
+})
+
+
+router.post('/', function (req, res, next) {
+    passport.authenticate('local', {
+        
+        successRedirect: '/admin/dashboard',
+        failureRedirect: '/admin',
+    })(req, res, next);
+});
+
+// logout
+router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/admin');
+});
+
+
 
 module.exports = router;
