@@ -9,8 +9,18 @@ const passport = require('passport');
 router.get("/register", function (req, res) {
     res.render("userregistration")
 })
-router.get("/login", function (req, res) {
+router.get("/login", function (req, res) {dsada
     res.render("userlogin")
+})
+
+router.get('*', function (req, res, next) {
+    if (req.isAuthenticated() && req.user.status === "user") {
+        next()
+    } else {
+        res.redirect("/user/login")
+    }
+
+
 })
 router.get("/userprofile", (req, res) => {
     res.render('userprofile',{
@@ -24,6 +34,7 @@ router.post("/register", function (req, res) {
     const username = req.body.username
     const password = req.body.password
     const password2 = req.body.password2
+    const status = "user"
 
 
     //validaciaa gasaketebeli
@@ -46,7 +57,8 @@ router.post("/register", function (req, res) {
         name: name,
         email: email,
         username: username,
-        password: password
+        password: password,
+        status: status
     })
 
     bcrypt.genSalt(10, function (err, salt) {

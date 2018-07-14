@@ -37,15 +37,18 @@ app.use(bodyParser.json())
 //pasport
 app.use(session({secret: 'keyboard cat'})) 
 require('./config/passport')(passport);
-require('./config/adminpass')(passport);
 app.use(passport.initialize());
 app.use(passport.session())
 
 
+
+
 //routing
+
 app.use('/', mainRouter);
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
+
 
 
 //ports

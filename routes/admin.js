@@ -5,15 +5,27 @@ const bodyParser = require("body-parser");
 const multer = require('multer');
 const path = require('path');
 const bcrypt = require('bcryptjs')
-const passport = require ('passport'); 
+const passport = require('passport');
 
 // get req admin 
 router.get("/", function (req, res) {
     res.render("login")
 })
 
+router.get('*', function (req, res, next) {
+    if (req.isAuthenticated() && req.user.status === "admin") {
+        next()
+    } else {
+        res.redirect("/admin")
+    }
+
+
+})
+
 router.get("/dashboard", (req, res) => {
-    res.render("dashboard")
+    res.render("dashboard", {
+        user: req.user
+    })
 })
 router.get("/tables", function (req, res) {
     baza.find({}, function (err, wigni) {
@@ -110,46 +122,11 @@ router.post("/addbook", upload, function (req, res) {
 
 
 //admin config
-const admin = require('./../models/adminmod.js');
-
-router.get('/a', function (req, res) {
-    res.render('adming')
-})
-
-router.post('/a', function (req, res) {
-    const username = req.body.name;
-    const password = req.body.pass;
-
-    let newadmin = new admin({
-        username: username,
-        password: password
-    })
-
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(newadmin.password, salt, function (err, hash) {
-            if (err) {
-                console.log(err);
-                return
-            }
-
-            newadmin.password = hash
-            newadmin.save(function (err) {
-                if (err) {
-                    console.log(err);
-                    return
-                } else {
-                    res.redirect('/')
-                }
-            })
-        });
-    })
-
-})
 
 
 router.post('/', function (req, res, next) {
     passport.authenticate('local', {
-        
+
         successRedirect: '/admin/dashboard',
         failureRedirect: '/admin',
     })(req, res, next);
