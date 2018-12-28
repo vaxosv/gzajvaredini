@@ -9,7 +9,7 @@ const passport = require('passport');
 router.get("/register", function (req, res) {
     res.render("userregistration")
 })
-router.get("/login", function (req, res) {dsada
+router.get("/login", function (req, res) {
     res.render("userlogin")
 })
 
