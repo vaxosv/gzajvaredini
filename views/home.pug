@@ -13,15 +13,35 @@ html(lang="en")
         include includes/css/usercostume.pug
 
     body
-        header
-            a(href="/admin") adminka
-            br
-            a(href="/user/login") user login
+        //header
+        //    a(href="/admin") adminka
+        //    br
+        //    a(href="/user/login") user login
 
         div.body
-            h2 მეც შენნაირი ვარ
+            .container
+                .nav.d-flex.justify-content-between
+                    #logo.logo
+                        a(href="/")
+                            | gzajvaredini.ge
+                    ul
+                        li
+                            a(href='/statistics') statistics
+                        li
+                            a(href='./loginRegister.html') Login/SignUp
+                        li
+                            a(href='#') about
+                .hero
+                    .title(style='font-size: 4em')
+                        | მეც შენნაირი ვარ
+                        br
+                        span(style='font-size: 19px;')
+                            a(href="")
+                                | შეავსეთ კითხვარი
+                    #logged.button(style='font-size: 1em')
+                        a(href="/user/register")
+                            | რეგისტრაცია/სისტემაში შესვლა
 
-        
 
 
         include includes/js/core.pug

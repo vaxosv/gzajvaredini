@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title ბიბლიოთეკა
+
+        include includes/css/core.pug
+
+        include includes/css/custom.pug
+
+        include includes/css/usercostume.pug
+
+        
+          style.
+            .categories{
+            display: flex;
+            }
+            .categories button{
+            margin: 10px;
+            }
+            .cons{
+            display: flex;
+            }
+            .cat-list{
+            border: 1px solid gray;
+            margin: 2px;
+            }
+            .cat-list{
+            width: 300px;
+            }
+            .content{
+            border: 1px solid gray;
+            margin: 2px;
+            }
+        body
+          .container
+            .nav.d-flex.justify-content-between
+              #logo.logo
+                a(href="/")
+                  | gzajvaredini.ge
+              ul
+                li
+                  a(href='./loginRegister.html') Login/SignUp
+                li about
+            h1(style='text-align: center;') სტატისტიკა
+            .categories
+              button.hollow.button რამდენი ფიქრობს ჩემნაირად
+            .cons
+              .cat-list
+                fieldset.large-7
+                  input#checkbox1(type='checkbox')
+                  label(for='checkbox1') რეგიონი
+                  br
+                  input#checkbox2(type='checkbox')
+                  label(for='checkbox2') ასაკი
+                  br
+                  input#checkbox3(type='checkbox')
+                  label(for='checkbox3') სქესი
