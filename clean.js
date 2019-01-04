@@ -6,7 +6,7 @@ let clean = {
         console.log(err);
     },
     portcallback:()=>{
-        console.log("app run in port 80");
+        console.log("app runs in port 80");
     }
 }
 
