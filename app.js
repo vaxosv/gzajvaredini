@@ -48,7 +48,9 @@ app.use(passport.session())
 app.use('/', mainRouter);
 app.use('/user', userRouter);
 app.use('/admin', adminRouter);
-
+app.get("*", function (req, res) {
+    res.render("404");
+});
 
 
 //ports

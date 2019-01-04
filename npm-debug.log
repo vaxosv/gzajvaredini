@@ -7,7 +7,7 @@
 6 silly lifecycle biblioteka@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle biblioteka@1.0.0~start: biblioteka@1.0.0
 8 verbose lifecycle biblioteka@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle biblioteka@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/vaxosv/Documents/gzajvaredini/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+9 verbose lifecycle biblioteka@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/vaxosv/Documents/gzajvaredini/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 10 verbose lifecycle biblioteka@1.0.0~start: CWD: /home/vaxosv/Documents/gzajvaredini
 11 silly lifecycle biblioteka@1.0.0~start: Args: [ '-c', 'node app' ]
 12 silly lifecycle biblioteka@1.0.0~start: Returned: code: 1  signal: null
