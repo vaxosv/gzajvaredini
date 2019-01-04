@@ -11,7 +11,10 @@ router.get("/register", function(req, res) {
 router.get("/login", function(req, res) {
   res.render("userlogin");
 });
-
+router.get("/mkitxvari", (req, res) => {
+  // res.send("dsadsad")
+  res.render("questions");
+});
 router.get("*", function(req, res, next) {
   if (req.isAuthenticated() && req.user.status === "user") {
     next();
@@ -24,6 +27,7 @@ router.get("/userprofile", (req, res) => {
     user: req.user
   });
 });
+
 //post
 router.post("/register", function(req, res) {
   const name = req.body.name;
