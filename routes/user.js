@@ -4,9 +4,38 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const expressValidator = require("express-validator");
 const passport = require("passport");
+const Ques = require("../models/Ques");
 
 router.get("/register", function(req, res) {
-  res.render("userregistration");
+  Ques.find({})
+  .exec()
+  .then(data => {
+    res.render("userregistration", {
+      aa: data[0].head
+    })
+  })
+  .catch(err => console.log(err));
+
+
+  // console.log(a);
+  // res.render("userregistration", {
+  //   Ques: a
+  // });
+  // let newq = new Ques({
+  //   head: "kitxva",
+  //   ans1: "pasuxi erti",
+  //   ans2: "pasuxi ori",
+  //   ans3: "pasuxi sami",
+  //   ans4: "pasuxi otxi"
+  // }).save(function (err) {
+  //   if (err) {
+  //     console.log(err);
+  //     return;
+  //   } else {
+  //     console.log('chawera bijooooo');
+  //   }
+  // })
+
 });
 router.get("/login", function(req, res) {
   res.render("userlogin");

@@ -13,12 +13,14 @@ html(lang='en')
     include includes/css/core.pug
 
     include includes/css/custom.pug
-
   body.bg-dark
     .container
       .card.card-login.mx-auto.mt-5
         .card-header
-          | registration
+          | registration #{aa}
+          script.
+            //- let head = #{ques_h}
+            //- console.log(head)
         .card-body
           form(method="POST", action="/user/register")
             .form-group
